@@ -49,7 +49,7 @@ const clarifaiFetch = async (input) => {
   }
 };
 
-const handleClarifai = (req, res) => {
+const handleClarifai = () => (req, res) => {
     clarifaiFetch(req.body.url).then(data => {
         if(data === "invalid-link"){
           return res.status(400).json(data)
