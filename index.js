@@ -4,7 +4,7 @@ const cors = require("cors");
 const knex = require("knex");
 const bcrypt = require("bcrypt");
 
-const { handleSignIn, handleSignUp, recognize } = require("./controllers");
+const { handleSignIn, handleSignUp, recognize, handleClarifai } = require("./controllers");
 
 // connexion to database:
 
@@ -31,6 +31,7 @@ app.get("/", (req, res) => {
 app.post("/signin", handleSignIn(db, bcrypt));
 app.post("/signup", handleSignUp(db, bcrypt));
 app.put("/recognize", recognize(db));
+app.post("/clarifai", handleClarifai())
 
 app.listen(process.env.PORT || 3001, () => {
   console.log(`app is running on port ${process.env.PORT}`);
