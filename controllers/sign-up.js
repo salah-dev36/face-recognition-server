@@ -27,12 +27,13 @@ const handleSignUp = (db, bcrypt) => (req, res) => {
         })
         .then(trx.commit)
         .catch(trx.rollback);
-    }).catch(({ code }) => {
-      if (code == 23505) {
-        res.status(400).json("existant-email");
-      } else {
-        res.status(400).json("failure");
-      }
+    }).catch((err) => {
+      res.status(400).json(err)
+      // if (code == 23505) {
+      //   res.status(400).json("existant-email");
+      // } else {
+      //   res.status(400).json("failure");
+      // }
     });
   }
 };
