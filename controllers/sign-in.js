@@ -1,6 +1,6 @@
 const handleSignIn = (db, bcrypt) => (req, res) => {
   const { email, password } = req.body;
-  if (!email || password) {
+  if (!email || !password) {
     return res.status(400).json("invalid-form-fields");
   } else {
     db.select("email", "hash")
